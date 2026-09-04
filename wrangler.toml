@@ -1,0 +1,51 @@
+name = "leadqual-worker"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+# ----------------------------------------------------------------------------
+# D1 database binding. Create it first:
+#   npx wrangler d1 create leadqual
+# then paste the returned database_id below.
+# ----------------------------------------------------------------------------
+[[d1_databases]]
+binding = "DB"
+database_name = "leadqual"
+database_id = "6c65be77-690c-4639-b856-781d0514ba27"
+
+# ----------------------------------------------------------------------------
+# Non-secret config (safe to commit). Secrets go via `wrangler secret put`:
+#   npx wrangler secret put SLACK_WEBHOOK_URL
+#   npx wrangler secret put NVIDIA_NIM_API_KEY
+#   npx wrangler secret put JINA_API_KEY               # website + LinkedIn fetch (free)
+#   npx wrangler secret put YOUTUBE_API_KEY            # FUTURE SCOPE - built (src/lib/youtube.ts) but not wired into the form/research flow yet
+#   npx wrangler secret put APIFY_API_TOKEN            # Instagram profile research (paid, ~$0.0026/lookup)
+#   npx wrangler secret put ADMIN_PASSWORD             # protects /leads dashboard
+#   npx wrangler secret put META_VERIFY_TOKEN
+#   npx wrangler secret put WHATSAPP_ACCESS_TOKEN       # WhatsApp send
+#   npx wrangler secret put WHATSAPP_PHONE_NUMBER_ID    # WhatsApp send
+#   npx wrangler secret put META_PAGE_ACCESS_TOKEN      # Instagram send
+# ----------------------------------------------------------------------------
+[vars]
+RATE_LIMIT_PER_MIN = "20"
+NVIDIA_NIM_BASE_URL = "https://integrate.api.nvidia.com/v1"
+NVIDIA_NIM_MODEL = "nvidia/nemotron-3.5-lightning-30b-a3b"
+# Tried in order if the primary model above returns HTTP 404/410 (gone/
+# renamed - this happened once already, see README "Model note"). Both are
+# confirmed present in the account's catalog (GET /v1/models) as of 2026-09,
+# though not load-tested as heavily as the primary - transient 5xx errors on
+# a fallback are retried the same as on the primary, only 404/410 skips to
+# the next one. If NVIDIA deprecates the primary too, check that endpoint
+# for current model IDs.
+NVIDIA_NIM_FALLBACK_MODELS = "nvidia/nemotron-3-super-120b-a12b,mistralai/mistral-nemotron"
+CORS_ALLOWED_ORIGIN = "https://roycelabs.pages.dev"
+WORKER_BASE_URL = "https://leadqual-worker.officialroycelabs-ai.workers.dev"
+
+# ----------------------------------------------------------------------------
+# Scheduled health check - runs every 15 min, checks D1 + NVIDIA NIM (through
+# the real fallback path), alerts Slack on failure. See src/lib/healthCheck.ts.
+# Optionally set a SEPARATE Slack channel's webhook via:
+#   npx wrangler secret put SYSTEM_HEALTH_SLACK_WEBHOOK_URL
+# (falls back to the main SLACK_WEBHOOK_URL, clearly prefixed, if not set).
+# ----------------------------------------------------------------------------
+[triggers]
+crons = ["*/15 * * * *"]
