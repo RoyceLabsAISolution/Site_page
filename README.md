@@ -10,6 +10,29 @@ A fast, dependency-free marketing site for Royce Labs (done-for-you AI automatio
 | `styles.css` | Design system: navy dark theme, tokens, layout, animations, responsive |
 | `app.js` | Sticky nav, mobile menu, scroll-reveal, FAQ accordion |
 
+## Chat widget backend
+
+The AI chat widget (bottom-right, `#chatw` in `index.html`) talks directly to
+a separate Cloudflare Worker, not the `functions/api/chat.js` Pages Function
+in this repo:
+
+`https://leadqual-worker.officialroycelabs-ai.workers.dev/api/chat`
+
+That Worker (source: `n8n-workflows/worker/` in a sibling project) runs a
+hybrid flow: free-form FAQ answers grounded on this site's content, then
+hands off to a structured 6-question lead-qualification flow (company name,
+contact, need, budget, timeline, website/social) once a visitor shares
+contact info or shows buying intent. Completed leads get scored with an LLM
+(BANT framework) and posted to Slack.
+
+`functions/api/chat.js` (Workers AI + Resend email) is no longer called by
+the widget as of the `app.js` update pointing at `CHAT_API` above, but is
+left in place/deployed in case you want to revert or reuse it elsewhere.
+
+If you move the Worker to a custom domain, update `CHAT_API` in
+`public/app.js` and the `CORS_ALLOWED_ORIGIN` var in the Worker's
+`wrangler.toml` to match.
+
 ## Fill these in before publishing
 
 Search-and-replace these placeholders across `index.html`:

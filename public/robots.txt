@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://roycelabs.pages.dev/sitemap.xml

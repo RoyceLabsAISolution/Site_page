@@ -5,6 +5,16 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=()
 
 /styles.css
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=86400
+
 /app.js
+  Cache-Control: public, max-age=86400
+
+/og-image.svg
+  Cache-Control: public, max-age=604800
+
+/sitemap.xml
+  Cache-Control: public, max-age=3600
+
+/robots.txt
   Cache-Control: public, max-age=3600

@@ -4,3 +4,9 @@ Desktop.ini
 .DS_Store
 *.log
 .vscode/
+
+# Secrets / local env — NEVER commit these
+.env
+.env.*
+.dev.vars
+.wrangler/
