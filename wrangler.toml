@@ -1,12 +1,3 @@
 name = "roycelabs"
 compatibility_date = "2024-11-01"
 pages_build_output_dir = "public"
-
-# Workers AI binding — available in Pages Functions as `env.AI`
-[ai]
-binding = "AI"
-
-# Secrets (set via `wrangler pages secret put`, NOT here):
-#   RESEND_API_KEY   — API key from https://resend.com
-#   LEAD_TO_EMAIL    — where lead notifications are sent
-#   LEAD_FROM_EMAIL  — verified Resend sender (e.g. leads@yourdomain.com)
