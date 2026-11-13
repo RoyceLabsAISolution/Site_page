@@ -1,0 +1,21 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "A fast, dependency-free marketing site for Royce Labs (done-for-you AI automation for small businesses). Plain HTML + CSS + vanilla JS — no build step, no frameworks. Loads instantly and hosts free anywhere.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoyceLabsAISolution/Site_page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/RoyceLabsAISolution/Site_page/issues"
+  },
+  "homepage": "https://github.com/RoyceLabsAISolution/Site_page#readme"
+}

@@ -35,4 +35,10 @@ if (-not $env:CLOUDFLARE_ACCOUNT_ID) {
 Write-Host "Deploying to Cloudflare Pages (token loaded from .env, not shown)..."
 # Deploy ONLY the public/ folder (website assets). Secrets/scripts stay at project
 # root and are never uploaded. Functions are picked up from ./functions automatically.
+# wrangler writes warnings to stderr; don't let "Stop" turn those into fatal errors.
+$ErrorActionPreference = "Continue"
 npx wrangler pages deploy public --project-name roycelabs --commit-dirty=true
+if ($LASTEXITCODE -ne 0) {
+  Write-Error "wrangler deploy failed (exit code $LASTEXITCODE)"
+  exit $LASTEXITCODE
+}

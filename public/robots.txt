@@ -3,6 +3,7 @@
 User-agent: *
 Allow: /
 
+# AI search indexers
 User-agent: OAI-SearchBot
 Allow: /
 
@@ -10,6 +11,16 @@ User-agent: PerplexityBot
 Allow: /
 
 User-agent: Claude-SearchBot
+Allow: /
+
+# AI assistants fetching a page because a user asked about it
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Claude-User
 Allow: /
 
 Sitemap: https://roycelabsai.in/sitemap.xml

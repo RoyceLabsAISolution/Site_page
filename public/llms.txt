@@ -1,0 +1,59 @@
+# Royce Labs AI Solutions
+
+> Royce Labs builds and runs an AI assistant that answers property enquiries on WhatsApp for real-estate developers and agencies in India, Tamil Nadu first. A buyer messages the developer's WhatsApp Business number; the assistant replies in English or Tamil, asks consent, captures budget, location and size, shows up to three matching listings, and passes a site-visit request to the developer's team. A 30-day pilot costs INR 4,999 and is open in Coimbatore. Other Tamil Nadu cities are on a waitlist. Languages today: English and Tamil only, so no pilots in other states yet.
+
+## What it does
+
+- Replies to property enquiries on WhatsApp in English or Tamil, and reads Tanglish.
+- Understands lakh and crore, cents and grounds, and terms such as patta, chitta, DTCP and CMDA.
+- Asks consent before saving anything; STOP or "no" revokes it.
+- Matches the buyer's budget, area and size to the developer's own listings (up to three).
+- Passes site-visit requests to the developer's team through a broker console. The team confirms or declines.
+
+## What it never does
+
+- Quote or negotiate a price.
+- Take money, Aadhaar or other ID documents.
+- Book a site visit without the developer confirming.
+- Message buyers who did not contact the developer first.
+- Invent a listing it does not have.
+
+## Current status (stated plainly)
+
+- Built and tested offline: the English and Tamil conversation, consent handling, listing matching and the broker console.
+- Not yet proven: live WhatsApp with real buyers. The pilot is the first live run.
+- Planned, not live: re-engaging dormant leads, and a Tamil and English phone agent. Both wait until the WhatsApp pilot has proven itself and a lawyer has checked consent and telecom rules.
+
+## Pilot
+
+- Price: INR 4,999 for 30 days. Setup fee waived for the first pilot partners. Cancel after 30 days, no lock-in.
+- For: plot and layout developers (DTCP / CMDA) and agencies or brokers with steady WhatsApp enquiries. Coimbatore first, then Chennai and beyond.
+- Prices are pilot prices and may change.
+
+## Cities (Tamil Nadu)
+
+- [Coimbatore](https://roycelabsai.in/cities/coimbatore/): pilot open, INR 4,999 for 30 days.
+- [Chennai](https://roycelabsai.in/cities/chennai/): waitlist, opens after the Coimbatore pilot.
+- [Madurai](https://roycelabsai.in/cities/madurai/): waitlist.
+- [Tiruchirappalli](https://roycelabsai.in/cities/tiruchirappalli/): waitlist.
+- [Salem](https://roycelabsai.in/cities/salem/): waitlist.
+- [Tiruppur](https://roycelabsai.in/cities/tiruppur/): waitlist.
+
+## Guides
+
+- [WhatsApp lead management for real estate in India](https://roycelabsai.in/guides/whatsapp-lead-management-real-estate-india/): what to automate, what to keep human, vendor questions.
+- [DPDP consent checklist for WhatsApp real-estate leads](https://roycelabsai.in/guides/dpdp-consent-whatsapp-real-estate-leads/): general information, not legal advice.
+- [Tamil Nadu property terms](https://roycelabsai.in/guides/tamil-nadu-property-terms-patta-chitta-dtcp-cmda-rera/): patta, chitta, EC, DTCP, CMDA, TNRERA, cent, ground, lakh, crore.
+
+## Other languages
+
+- [Tamil homepage](https://roycelabsai.in/ta/): the same offer in Tamil.
+
+## Links
+
+- [Homepage](https://roycelabsai.in/): full description, how it works, trust rules, pilot and FAQ.
+- [FAQ](https://roycelabsai.in/#faq): straight answers on AI disclosure, data, languages and outbound calls.
+- Contact: officialroycelabs.ai@gmail.com
+- [LinkedIn](https://www.linkedin.com/company/royce-labs-ai-solution)
+- [YouTube](https://www.youtube.com/channel/UCelMLRYF-I6_yd0IA4vyUeg)
+- [Instagram](https://www.instagram.com/royces_labs_ai)
