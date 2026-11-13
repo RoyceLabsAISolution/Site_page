@@ -1,8 +1,10 @@
 ﻿/*
-  X-Frame-Options: SAMEORIGIN
+  X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()
+  Strict-Transport-Security: max-age=15552000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-pd3az8vlUoOOd+jEAgDTzXUM40m7ZRE73qy1OBqoKnA=' 'sha256-ZM+XcvD0T5qjDSS6eYfRKrxa+vaE9ekwRRUsAa9JvdE='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.trycloudflare.com https://chat.roycelabsai.in; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
 
 /styles.css
   Cache-Control: public, max-age=86400

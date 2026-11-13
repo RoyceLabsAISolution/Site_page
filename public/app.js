@@ -102,11 +102,17 @@
   accordion("details.card--svc");
 
   // ===== AI Chat Widget =====
-  // Talks directly to the leadqual-worker Cloudflare Worker (hybrid FAQ +
-  // structured lead-qualification pipeline: BANT scoring + Slack alerts).
-  // Replaces the old /api/chat Pages Function (Workers AI FAQ + Resend email).
+  // Talks directly to the "Lead-Qualification-Unified" n8n workflow's native
+  // chat webhook (slot-filling qualification + AI scoring + Slack alerts +
+  // Cal.com booking link), reached through a Cloudflare Tunnel in front of
+  // the self-hosted n8n instance.
+  //
+  // NOTE: this is currently a Cloudflare Quick Tunnel (no custom domain on
+  // the Cloudflare account yet), so CHAT_API changes every time the tunnel
+  // process restarts. Swap this for a named-tunnel hostname once a domain is
+  // added to Cloudflare, so this URL stops needing to be hand-updated.
   (function initChat() {
-    var CHAT_API = "https://leadqual-worker.officialroycelabs-ai.workers.dev/api/chat";
+    var CHAT_API = "https://subjects-newspaper-applied-represent.trycloudflare.com/webhook/17c02f1b-d583-49c1-ad84-052469571ab2/chat";
 
     var root = document.getElementById("chatw");
     var fab = document.getElementById("chatwFab");
@@ -169,7 +175,7 @@
       if (!greeted) {
         greeted = true;
         addMsg(
-          "Hi! I'm Royce, the AI assistant for Royce Labs. Ask me about our services, how we work, or pricing — or tell me what your business needs and I'll get you set up.",
+          "Hi! I'm Royce, an automated assistant for Royce Labs. Ask me how our WhatsApp lead agent works for Tamil Nadu real estate, or about the 30-day pilot.",
           "bot"
         );
       }
@@ -198,14 +204,16 @@
       history.push({ role: "user", content: text });
       var typing = showTyping();
       try {
+        // n8n's chat trigger tracks conversation state server-side by
+        // sessionId (Postgres), so only the latest message is sent.
         var res = await fetch(CHAT_API, {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ sessionId: sessionId, messages: history }),
+          body: JSON.stringify({ action: "sendMessage", sessionId: sessionId, chatInput: text }),
         });
         var data = await res.json();
         typing.remove();
-        var reply = (data && data.reply) || "Sorry, something went wrong. Please try again.";
+        var reply = (data && data.output) || "Sorry, something went wrong. Please try again.";
         history.push({ role: "assistant", content: reply });
         addMsg(reply, "bot");
       } catch (e) {

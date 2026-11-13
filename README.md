@@ -13,25 +13,36 @@ A fast, dependency-free marketing site for Royce Labs (done-for-you AI automatio
 ## Chat widget backend
 
 The AI chat widget (bottom-right, `#chatw` in `index.html`) talks directly to
-a separate Cloudflare Worker, not the `functions/api/chat.js` Pages Function
-in this repo:
+the **`Lead-Qualification-Unified` n8n workflow** (self-hosted n8n running in
+Podman on this machine — containers `n8n-workflows_n8n_1`/`_postgres_1`/
+`_redis_1`), via its native LangChain Chat Trigger webhook:
 
-`https://leadqual-worker.officialroycelabs-ai.workers.dev/api/chat`
+`https://<tunnel-host>/webhook/17c02f1b-d583-49c1-ad84-052469571ab2/chat`
 
-That Worker (source: `n8n-workflows/worker/` in a sibling project) runs a
-hybrid flow: free-form FAQ answers grounded on this site's content, then
-hands off to a structured 6-question lead-qualification flow (company name,
-contact, need, budget, timeline, website/social) once a visitor shares
-contact info or shows buying intent. Completed leads get scored with an LLM
-(BANT framework) and posted to Slack.
+That workflow asks a slot-filling sequence (company name, contact, need,
+budget, timeline, website/social), scores the completed lead with an LLM,
+and on hot/warm leads posts a Slack alert and appends a Cal.com booking link
+to the chat reply. Conversation state is tracked server-side in Postgres by
+`sessionId`, so the widget only ever sends the latest message.
 
-`functions/api/chat.js` (Workers AI + Resend email) is no longer called by
-the widget as of the `app.js` update pointing at `CHAT_API` above, but is
-left in place/deployed in case you want to revert or reuse it elsewhere.
+**Current exposure: a Cloudflare Quick Tunnel** (`cloudflared tunnel --url
+http://localhost:5678`), because this Cloudflare account has no custom
+domain/zone yet. This means:
+- `CHAT_API` in `public/app.js` is a `*.trycloudflare.com` URL that **changes
+  every time the tunnel process restarts** (machine reboot, process crash,
+  etc.) — if the widget stops getting replies, re-run the tunnel, copy the
+  new URL into `CHAT_API`, and redeploy.
+- n8n itself must stay running (`podman ps` to check the 4 containers above)
+  for the tunnel to have anything to forward to.
 
-If you move the Worker to a custom domain, update `CHAT_API` in
-`public/app.js` and the `CORS_ALLOWED_ORIGIN` var in the Worker's
-`wrangler.toml` to match.
+**To make this permanent:** add a real domain to this Cloudflare account as
+a zone, then replace the quick tunnel with a named tunnel (`cloudflared
+tunnel create`, map a hostname like `n8n.yourdomain.com` to it, add the DNS
+record) — the hostname never changes after that, so `CHAT_API` is set once.
+
+`functions/api/chat.js` (Workers AI + Resend email) is legacy/unused — kept
+only in case you want to revert or repurpose it. It is not called by the
+widget.
 
 ## Fill these in before publishing
 
