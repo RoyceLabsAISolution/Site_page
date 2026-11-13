@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="google-site-verification" content="VewmmkthEhn0U_jX5xlK8VT5srBdzetSQsjM-4pJTKk" />
 <title>Apply for a Pilot Place | Royce Labs</title>
-<meta name="description" content="Apply for a Royce Labs AI assistant pilot place in 20 seconds: name, business, phone and city. We call or WhatsApp you with a plain plan." />
+<meta name="description" content="Apply for a Royce Labs AI assistant pilot place in 20 seconds: name, business, email and city. We reply by email with a plain plan." />
 <meta name="author" content="Royce Labs AI Solutions" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 <meta name="theme-color" content="#F6F1E7" />
@@ -17,7 +17,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Royce Labs AI Solutions" />
 <meta property="og:title" content="Apply for a Pilot Place | Royce Labs" />
-<meta property="og:description" content="Apply for a Royce Labs AI assistant pilot place in 20 seconds: name, business, phone and city. We call or WhatsApp you with a plain plan." />
+<meta property="og:description" content="Apply for a Royce Labs AI assistant pilot place in 20 seconds: name, business, email and city. We reply by email with a plain plan." />
 <meta property="og:url" content="https://roycelabsai.in/apply/" />
 <meta property="og:locale" content="en_IN" />
 <meta property="og:image" content="https://roycelabsai.in/og-image.png" />
@@ -25,12 +25,12 @@
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Apply for a Pilot Place | Royce Labs" />
-<meta name="twitter:description" content="Apply for a Royce Labs AI assistant pilot place in 20 seconds: name, business, phone and city. We call or WhatsApp you with a plain plan." />
+<meta name="twitter:description" content="Apply for a Royce Labs AI assistant pilot place in 20 seconds: name, business, email and city. We reply by email with a plain plan." />
 <meta name="twitter:image" content="https://roycelabsai.in/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Fraunces:ital,wght@0,500;0,600;1,500&family=Noto+Sans+Tamil:wght@400;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/styles.css?v=4" />
+<link rel="stylesheet" href="/styles.css?v=5" />
 <script>document.documentElement.className="js";</script>
 <script type="application/ld+json">
 {
@@ -106,7 +106,7 @@
     <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Apply</li></ol></nav>
     <span class="eyebrow">Pilot places · Coimbatore</span>
     <h1 class="apply__h1">Apply for a pilot place</h1>
-    <p class="lede">Four quick questions. We call or WhatsApp you within one working day with a plain plan. No payment now.</p>
+    <p class="lede">Four quick questions. We reply by email with a plain plan, usually within one to two working days. No payment to apply.</p>
 
     <div id="applyStatus" class="notice" role="status" aria-live="polite" hidden></div>
 
@@ -126,14 +126,19 @@
         <p class="err" id="eBusiness" hidden></p>
       </div>
       <div class="field">
-        <label for="fPhone">Mobile number <span class="hint">(we will call or WhatsApp this)</span></label>
-        <input id="fPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="98765 43210" required maxlength="20" />
-        <p class="err" id="ePhone" hidden></p>
+        <label for="fEmail">Email address <span class="hint">(we will reply here)</span></label>
+        <input id="fEmail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" required maxlength="120" />
+        <p class="err" id="eEmail" hidden></p>
       </div>
       <div class="field">
         <label for="fCity">City</label>
         <select id="fCity" name="city" required><option value="">Choose your city</option><option>Coimbatore</option><option>Chennai</option><option>Madurai</option><option>Tiruchirappalli</option><option>Salem</option><option>Tiruppur</option><option>Other Tamil Nadu city</option><option>Outside Tamil Nadu</option></select>
         <p class="err" id="eCity" hidden></p>
+      </div>
+      <div class="field">
+        <label for="fPhone">Mobile number <span class="hint">(optional, only if you prefer a call or WhatsApp)</span></label>
+        <input id="fPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="98765 43210" maxlength="20" />
+        <p class="err" id="ePhone" hidden></p>
       </div>
       <div class="field">
         <label for="fVolume">About how many enquiries a week? <span class="hint">(optional)</span></label>
@@ -144,7 +149,7 @@
         <textarea id="fNote" name="note" rows="3" maxlength="600" placeholder="For example: plots near Saravanampatti, enquiries come from Facebook ads"></textarea>
       </div>
       <div class="field field--check">
-        <label class="check"><input type="checkbox" name="consent" value="yes" id="fConsent" required /><span>I agree that Royce Labs may call or WhatsApp me on this number about the pilot. I can say STOP at any time. See the <a href="/privacy/" target="_blank" rel="noopener">privacy notice</a>.</span></label>
+        <label class="check"><input type="checkbox" name="consent" value="yes" id="fConsent" required /><span>I agree that Royce Labs may contact me by email, and by phone or WhatsApp if I gave a number, about the pilot. I can say STOP at any time. See the <a href="/privacy/" target="_blank" rel="noopener">privacy notice</a>.</span></label>
         <p class="err" id="eConsent" hidden></p>
       </div>
       <button class="btn btn--primary btn--lg apply__submit" type="submit" id="applyBtn">Send my application</button>
@@ -153,7 +158,7 @@
 
     <div id="applyDone" class="done" hidden tabindex="-1">
       <h2>Thank you. We have your application.</h2>
-      <p>We will call or WhatsApp you within one working day. If it is urgent, email <a href="mailto:officialroycelabs.ai@gmail.com">officialroycelabs.ai@gmail.com</a>.</p>
+      <p>We will reply to your email within one to two working days. If you do not hear from us, write to <a href="mailto:officialroycelabs.ai@gmail.com">officialroycelabs.ai@gmail.com</a>.</p>
       <p><a class="btn btn--ghost" href="/">Back to the homepage</a></p>
     </div>
 
@@ -201,7 +206,7 @@
   </div>
 </footer>
 
-<script src="/app.js?v=4"></script>
-<script src="/apply.js?v=4"></script>
+<script src="/app.js?v=5"></script>
+<script src="/apply.js?v=5"></script>
 </body>
 </html>

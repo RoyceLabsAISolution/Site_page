@@ -25,7 +25,7 @@ Marketing site for Royce Labs: an AI assistant that answers property enquiries o
 - Positioning: call it an "AI assistant for real-estate enquiries" and keep WhatsApp as the channel. Avoid "lead management" as the product name (the one guide that targets that search phrase is the exception).
 - Only Coimbatore is a live pilot. Other cities are waitlists, and other states are not served (English and Tamil only). Do not claim otherwise.
 - After changing `scripts/build-pages.js` or the shared CSS/JS, bump `ASSET_V` and the `?v=` on the hand-edited pages. Update `dateModified`, the footer date and sitemap `lastmod` together.
-- Applications are emailed only; nothing is stored. If an email fails, the page offers a prefilled mailto fallback.
+- No price is published and no personal name, photo or phone number is shown on the site (deliberate: spam and harassment risk). The pilot is a small paid pilot with the fee agreed by email in writing; the apply form asks for email, with phone optional. Applications are emailed only; nothing is stored. If an email fails, the page offers a prefilled mailto fallback.
 
 ## Preview
 

@@ -1,6 +1,6 @@
 # Royce Labs AI Solutions
 
-> Royce Labs builds and runs an AI assistant that answers property enquiries on WhatsApp for real-estate developers and agencies in India, Tamil Nadu first. A buyer messages the developer's WhatsApp Business number; the assistant replies in English or Tamil, asks consent, captures budget, location and size, shows up to three matching listings, and passes a site-visit request to the developer's team. A 30-day pilot costs INR 4,999 and is open in Coimbatore. Other Tamil Nadu cities are on a waitlist. Languages today: English and Tamil only, so no pilots in other states yet.
+> Royce Labs builds and runs an AI assistant that answers property enquiries on WhatsApp for real-estate developers and agencies in India, Tamil Nadu first. A buyer messages the developer's WhatsApp Business number; the assistant replies in English or Tamil, asks consent, captures budget, location and size, shows up to three matching listings, and passes a site-visit request to the developer's team. A small paid 30-day pilot is open in Coimbatore; the fee is agreed by email, in writing, before anything starts. Applying is free. Other Tamil Nadu cities are on a waitlist. Languages today: English and Tamil only, so no pilots in other states yet.
 
 ## What it does
 
@@ -26,13 +26,13 @@
 
 ## Pilot
 
-- Price: INR 4,999 for 30 days. Setup fee waived for the first pilot partners. Cancel after 30 days, no lock-in.
+- Pricing: not published. The pilot fee is agreed by email, in writing, before anything starts; applying is free. Cancel after 30 days, no lock-in.
 - For: plot and layout developers (DTCP / CMDA) and agencies or brokers with steady WhatsApp enquiries. Coimbatore first, then Chennai and beyond.
 - Prices are pilot prices and may change.
 
 ## Cities (Tamil Nadu)
 
-- [Coimbatore](https://roycelabsai.in/cities/coimbatore/): pilot open, INR 4,999 for 30 days.
+- [Coimbatore](https://roycelabsai.in/cities/coimbatore/): pilot places open; fee agreed by email.
 - [Chennai](https://roycelabsai.in/cities/chennai/): waitlist, opens after the Coimbatore pilot.
 - [Madurai](https://roycelabsai.in/cities/madurai/): waitlist.
 - [Tiruchirappalli](https://roycelabsai.in/cities/tiruchirappalli/): waitlist.

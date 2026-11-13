@@ -9,7 +9,7 @@ const SITE = "https://roycelabsai.in";
 const OUT = path.join(__dirname, "..", "public");
 const EMAIL = "officialroycelabs.ai@gmail.com";
 const DATE = "2026-11-13";
-const ASSET_V = "4";
+const ASSET_V = "5";
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const write = (rel, html) => {
@@ -312,7 +312,7 @@ function cityPage(c) {
   const p = `/cities/${c.slug}/`;
   const title = `AI Assistant for ${nm} Real Estate | Royce Labs`;
   const desc = c.pilot
-    ? `AI assistant on WhatsApp for ${nm} developers and agencies: English and Tamil replies, consent first, site visits to your team. Pilot open, ₹4,999 for 30 days.`
+    ? `AI assistant on WhatsApp for ${nm} developers and agencies: English and Tamil replies, consent first, site visits to your team. Pilot places open.`
     : `AI assistant on WhatsApp for ${nm} real estate: English and Tamil replies, consent first, site visits to your team. Join the ${nm} waitlist.`;
   const faq = [
     [`Is Royce Labs live in ${nm}?`, c.pilot
@@ -322,8 +322,8 @@ function cityPage(c) {
     d.q4,
     [`Does it quote prices or book site visits in ${nm}?`, "No. It never quotes or negotiates a price, takes money or ID documents, or books a visit by itself. Buyers can ask for a visit and your team confirms or declines."],
     [`What does it cost in ${nm}?`, c.pilot
-      ? "The Coimbatore pilot is ₹4,999 for 30 days, with the setup fee waived for the first pilot partners. After the pilot, a simple monthly plan plus a one-time setup fee, quoted in writing before you commit."
-      : `The Coimbatore pilot is ₹4,999 for 30 days. ${nm} pricing will be quoted in writing when we open there. Prices are pilot prices and may change.`],
+      ? "Applying is free. The Coimbatore pilot is a small paid pilot: we agree the fee with you by email, in writing, before anything starts. After the pilot, a simple monthly plan plus a one-time setup fee, also agreed in writing before you commit."
+      : `Joining the waitlist is free. Our first pilot is in Coimbatore, and we agree its fee with each partner by email, in writing. ${nm} would be agreed the same way when we open there. Fees may change as we learn from the first customers.`],
   ];
   const items = [{ name: "Home", path: "/" }, { name: "Cities", path: "/cities/" }, { name: nm, path: p }];
   const jsonld = {
@@ -341,7 +341,7 @@ function cityPage(c) {
         areaServed: { "@type": "City", name: nm, containedInPlace: { "@type": "AdministrativeArea", name: "Tamil Nadu, India" } },
         audience: { "@type": "BusinessAudience", audienceType: "Plot and layout developers, real-estate agencies and brokers" },
         description: `A WhatsApp assistant for ${nm} real-estate teams: replies in English and Tamil, asks consent before saving anything, captures budget, location and size, shows up to three matching listings and passes site-visit requests to your team.`,
-        ...(c.pilot ? { offers: { "@type": "Offer", name: "30-day pilot", url: SITE + p, price: "4999", priceCurrency: "INR", availability: "https://schema.org/LimitedAvailability", eligibleRegion: { "@type": "City", name: nm } } } : {}),
+        ...(c.pilot ? { offers: { "@type": "Offer", name: "30-day paid pilot", description: "Small paid pilot; the fee is agreed by email, in writing, before anything starts.", url: SITE + p, availability: "https://schema.org/LimitedAvailability", eligibleRegion: { "@type": "City", name: nm } } } : {}),
       },
       { ...faqLd(faq), "@id": SITE + p + "#faq" },
     ],
@@ -385,7 +385,7 @@ ${d.chat.map(([w, t]) => `            <div class="bubble bubble--${w}">${esc(t)}
 
 <section class="inshort" aria-label="In short">
   <div class="container">
-    <p><strong>In short:</strong> Royce Labs is an AI assistant for real-estate developers and agencies in ${nm}, Tamil Nadu. It answers property enquiries on WhatsApp: it replies in English or Tamil, asks consent before saving anything, captures budget, location and size, shows up to three matching listings from your own inventory and passes a site-visit request to your team. It never books a visit, quotes a price or takes money. ${c.pilot ? "The 30-day pilot is ₹4,999." : "Our first pilot is in Coimbatore; " + nm + " is next on the list."}</p>
+    <p><strong>In short:</strong> Royce Labs is an AI assistant for real-estate developers and agencies in ${nm}, Tamil Nadu. It answers property enquiries on WhatsApp: it replies in English or Tamil, asks consent before saving anything, captures budget, location and size, shows up to three matching listings from your own inventory and passes a site-visit request to your team. It never books a visit, quotes a price or takes money. ${c.pilot ? "The 30-day pilot is a small paid pilot, with the fee agreed by email before it starts." : "Our first pilot is in Coimbatore; " + nm + " is next on the list."}</p>
   </div>
 </section>
 
@@ -435,7 +435,7 @@ ${others.map((o) => `      <li><a href="/cities/${o.slug}/">${o.name}</a></li>`)
   <div class="container">
     <span class="eyebrow">${c.pilot ? "Pilot places · Coimbatore" : nm + " waitlist"}</span>
     <h2>${c.pilot ? "Want to be one of the first three?" : `Want ${nm} opened sooner?`}</h2>
-    <p>Fill a 20-second form with your name, phone and city. We call or WhatsApp you with a plain plan.</p>
+    <p>Fill a 20-second form with your name, email and city. We reply by email with a plain plan.</p>
     <div class="cta__actions"><a class="btn btn--light btn--lg" href="${applyHref(nm)}">${cta}</a></div>
   </div>
 </section>
@@ -468,7 +468,7 @@ function citiesIndex() {
     <h1>AI assistant for Tamil Nadu real-estate enquiries, city by city</h1>
     <p class="lede">Royce Labs is built for Indian real estate, Tamil Nadu first. Our first pilot is in Coimbatore. The other cities below are taking names now and open after the Coimbatore pilot shows it works. We have not run a live pilot outside Coimbatore.</p>
     <ul class="citylist">
-${CITIES.map((c) => `      <li><a href="/cities/${c.slug}/"><strong>${c.name}</strong><span>${c.pilot ? "Pilot open · ₹4,999 for 30 days" : "Waitlist open"}</span></a></li>`).join("\n")}
+${CITIES.map((c) => `      <li><a href="/cities/${c.slug}/"><strong>${c.name}</strong><span>${c.pilot ? "Pilot places open" : "Waitlist open"}</span></a></li>`).join("\n")}
     </ul>
     <p>Outside Tamil Nadu? The assistant currently replies in English and Tamil only, so we are not taking pilots in other states yet. <a href="${applyHref("Outside Tamil Nadu")}">Tell us where you are</a> and which languages your buyers use; it helps us decide what to build next.</p>
   </div>
@@ -680,7 +680,7 @@ ${body.body}
   <div class="container">
     <span class="eyebrow">Pilot places · Coimbatore</span>
     <h2>Want this running on your WhatsApp?</h2>
-    <p>Fill a 20-second form with your name, phone and city. We call or WhatsApp you with a plain plan.</p>
+    <p>Fill a 20-second form with your name, email and city. We reply by email with a plain plan.</p>
     <div class="cta__actions"><a class="btn btn--light btn--lg" href="${applyHref("Coimbatore")}">Apply for a pilot place</a></div>
   </div>
 </section>
@@ -693,7 +693,7 @@ ${body.body}
 function applyPage() {
   const p = "/apply/";
   const title = "Apply for a Pilot Place | Royce Labs";
-  const desc = "Apply for a Royce Labs AI assistant pilot place in 20 seconds: name, business, phone and city. We call or WhatsApp you with a plain plan.";
+  const desc = "Apply for a Royce Labs AI assistant pilot place in 20 seconds: name, business, email and city. We reply by email with a plain plan.";
   const items = [{ name: "Home", path: "/" }, { name: "Apply", path: p }];
   const jsonld = {
     "@context": "https://schema.org",
@@ -711,7 +711,7 @@ function applyPage() {
     ${crumbs(items)}
     <span class="eyebrow">Pilot places · Coimbatore</span>
     <h1 class="apply__h1">Apply for a pilot place</h1>
-    <p class="lede">Four quick questions. We call or WhatsApp you within one working day with a plain plan. No payment now.</p>
+    <p class="lede">Four quick questions. We reply by email with a plain plan, usually within one to two working days. No payment to apply.</p>
 
     <div id="applyStatus" class="notice" role="status" aria-live="polite" hidden></div>
 
@@ -731,14 +731,19 @@ function applyPage() {
         <p class="err" id="eBusiness" hidden></p>
       </div>
       <div class="field">
-        <label for="fPhone">Mobile number <span class="hint">(we will call or WhatsApp this)</span></label>
-        <input id="fPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="98765 43210" required maxlength="20" />
-        <p class="err" id="ePhone" hidden></p>
+        <label for="fEmail">Email address <span class="hint">(we will reply here)</span></label>
+        <input id="fEmail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" required maxlength="120" />
+        <p class="err" id="eEmail" hidden></p>
       </div>
       <div class="field">
         <label for="fCity">City</label>
         <select id="fCity" name="city" required>${opt(["Coimbatore", "Chennai", "Madurai", "Tiruchirappalli", "Salem", "Tiruppur", "Other Tamil Nadu city", "Outside Tamil Nadu"], "Choose your city")}</select>
         <p class="err" id="eCity" hidden></p>
+      </div>
+      <div class="field">
+        <label for="fPhone">Mobile number <span class="hint">(optional, only if you prefer a call or WhatsApp)</span></label>
+        <input id="fPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="98765 43210" maxlength="20" />
+        <p class="err" id="ePhone" hidden></p>
       </div>
       <div class="field">
         <label for="fVolume">About how many enquiries a week? <span class="hint">(optional)</span></label>
@@ -749,7 +754,7 @@ function applyPage() {
         <textarea id="fNote" name="note" rows="3" maxlength="600" placeholder="For example: plots near Saravanampatti, enquiries come from Facebook ads"></textarea>
       </div>
       <div class="field field--check">
-        <label class="check"><input type="checkbox" name="consent" value="yes" id="fConsent" required /><span>I agree that Royce Labs may call or WhatsApp me on this number about the pilot. I can say STOP at any time. See the <a href="/privacy/" target="_blank" rel="noopener">privacy notice</a>.</span></label>
+        <label class="check"><input type="checkbox" name="consent" value="yes" id="fConsent" required /><span>I agree that Royce Labs may contact me by email, and by phone or WhatsApp if I gave a number, about the pilot. I can say STOP at any time. See the <a href="/privacy/" target="_blank" rel="noopener">privacy notice</a>.</span></label>
         <p class="err" id="eConsent" hidden></p>
       </div>
       <button class="btn btn--primary btn--lg apply__submit" type="submit" id="applyBtn">Send my application</button>
@@ -758,7 +763,7 @@ function applyPage() {
 
     <div id="applyDone" class="done" hidden tabindex="-1">
       <h2>Thank you. We have your application.</h2>
-      <p>We will call or WhatsApp you within one working day. If it is urgent, email <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>
+      <p>We will reply to your email within one to two working days. If you do not hear from us, write to <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>
       <p><a class="btn btn--ghost" href="/">Back to the homepage</a></p>
     </div>
 
@@ -776,7 +781,7 @@ function applyPage() {
 function applyPageTa() {
   const p = "/ta/apply/";
   const title = "பைலட் இடத்துக்கு விண்ணப்பிக்கவும் | Royce Labs";
-  const desc = "Royce Labs AI உதவியாளர் பைலட் இடத்துக்கு 20 வினாடியில் விண்ணப்பிக்கவும்: பெயர், நிறுவனம், மொபைல் எண், நகரம். ஒரு வேலை நாளுக்குள் அழைப்போம்.";
+  const desc = "Royce Labs AI உதவியாளர் பைலட் இடத்துக்கு 20 வினாடியில் விண்ணப்பிக்கவும்: பெயர், நிறுவனம், மின்னஞ்சல், நகரம். மின்னஞ்சலில் பதிலளிப்போம்.";
   const jsonld = {
     "@context": "https://schema.org",
     "@graph": [ORG, { "@type": "ContactPage", "@id": SITE + p + "#webpage", url: SITE + p, name: title, inLanguage: "ta-IN", dateModified: DATE }],
@@ -791,7 +796,7 @@ function applyPageTa() {
   <div class="container container--narrow">
     <span class="eyebrow">பைலட் இடங்கள் · கோவை</span>
     <h1 class="apply__h1">பைலட் இடத்துக்கு விண்ணப்பிக்கவும்</h1>
-    <p class="lede">நான்கு சுருக்கமான கேள்விகள். ஒரு வேலை நாளுக்குள் உங்களை அழைப்போம் அல்லது WhatsApp செய்து தெளிவான திட்டத்தைச் சொல்வோம். இப்போது கட்டணம் இல்லை.</p>
+    <p class="lede">நான்கு சுருக்கமான கேள்விகள். மின்னஞ்சலில் தெளிவான திட்டத்துடன் பதிலளிப்போம், பொதுவாக ஒன்று முதல் இரண்டு வேலை நாட்களுக்குள். விண்ணப்பிக்கக் கட்டணம் இல்லை.</p>
 
     <div id="applyStatus" class="notice" role="status" aria-live="polite" hidden></div>
 
@@ -811,14 +816,19 @@ function applyPageTa() {
         <p class="err" id="eBusiness" hidden></p>
       </div>
       <div class="field">
-        <label for="fPhone">மொபைல் எண் <span class="hint">(இதில் அழைப்போம் அல்லது WhatsApp செய்வோம்)</span></label>
-        <input id="fPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="98765 43210" required maxlength="20" />
-        <p class="err" id="ePhone" hidden></p>
+        <label for="fEmail">மின்னஞ்சல் முகவரி <span class="hint">(இதற்குப் பதிலளிப்போம்)</span></label>
+        <input id="fEmail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" required maxlength="120" />
+        <p class="err" id="eEmail" hidden></p>
       </div>
       <div class="field">
         <label for="fCity">நகரம்</label>
         <select id="fCity" name="city" required>${opt(cities, "உங்கள் நகரத்தைத் தேர்ந்தெடுக்கவும்")}</select>
         <p class="err" id="eCity" hidden></p>
+      </div>
+      <div class="field">
+        <label for="fPhone">மொபைல் எண் <span class="hint">(விருப்பம்; அழைப்பு அல்லது WhatsApp விரும்பினால் மட்டும்)</span></label>
+        <input id="fPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="98765 43210" maxlength="20" />
+        <p class="err" id="ePhone" hidden></p>
       </div>
       <div class="field">
         <label for="fVolume">வாரத்துக்கு எத்தனை விசாரணைகள்? <span class="hint">(விருப்பம்)</span></label>
@@ -829,7 +839,7 @@ function applyPageTa() {
         <textarea id="fNote" name="note" rows="3" maxlength="600" placeholder="எ.கா: சரவணம்பட்டி அருகே மனைகள், விசாரணைகள் Facebook விளம்பரங்களிலிருந்து வருகின்றன"></textarea>
       </div>
       <div class="field field--check">
-        <label class="check"><input type="checkbox" name="consent" value="yes" id="fConsent" required /><span>இந்த எண்ணில் பைலட் பற்றி Royce Labs என்னை அழைக்கலாம் அல்லது WhatsApp செய்யலாம் என்று ஒப்புக்கொள்கிறேன். எப்போது வேண்டுமானாலும் STOP என்று சொல்லலாம். <a href="/privacy/" target="_blank" rel="noopener">தனியுரிமை அறிவிப்பைப்</a> பார்க்கவும் (ஆங்கிலத்தில்).</span></label>
+        <label class="check"><input type="checkbox" name="consent" value="yes" id="fConsent" required /><span>பைலட் பற்றி Royce Labs என்னை மின்னஞ்சலில் தொடர்புகொள்ளலாம் என்றும், நான் எண் கொடுத்திருந்தால் தொலைபேசி அல்லது WhatsApp-இலும் தொடர்புகொள்ளலாம் என்றும் ஒப்புக்கொள்கிறேன். எப்போது வேண்டுமானாலும் STOP என்று சொல்லலாம். <a href="/privacy/" target="_blank" rel="noopener">தனியுரிமை அறிவிப்பைப்</a> பார்க்கவும் (ஆங்கிலத்தில்).</span></label>
         <p class="err" id="eConsent" hidden></p>
       </div>
       <button class="btn btn--primary btn--lg apply__submit" type="submit" id="applyBtn">என் விண்ணப்பத்தை அனுப்பு</button>
@@ -838,7 +848,7 @@ function applyPageTa() {
 
     <div id="applyDone" class="done" hidden tabindex="-1">
       <h2>நன்றி. உங்கள் விண்ணப்பம் கிடைத்தது.</h2>
-      <p>ஒரு வேலை நாளுக்குள் உங்களை அழைப்போம் அல்லது WhatsApp செய்வோம். அவசரம் என்றால் <a href="mailto:${EMAIL}">${EMAIL}</a> என்ற முகவரிக்கு மின்னஞ்சல் அனுப்புங்கள்.</p>
+      <p>ஒன்று முதல் இரண்டு வேலை நாட்களுக்குள் உங்கள் மின்னஞ்சலுக்குப் பதிலளிப்போம். பதில் வரவில்லை என்றால் <a href="mailto:${EMAIL}">${EMAIL}</a> என்ற முகவரிக்கு எழுதுங்கள்.</p>
       <p><a class="btn btn--ghost" href="/ta/">முகப்புக்குத் திரும்பு</a></p>
     </div>
 
@@ -873,12 +883,12 @@ function privacyPage() {
     <p>Royce Labs AI Solutions, Coimbatore, Tamil Nadu. Contact: <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>
     <h2>What we collect when you apply for a pilot place</h2>
     <ul class="bul">
-      <li>Your name, business name, mobile number and city.</li>
+      <li>Your name, business name, email address and city, and a mobile number only if you choose to give one.</li>
       <li>Optionally: how many enquiries you get a week, and a short note.</li>
       <li>The page you applied from, the language of the form, and the country your request came from (a coarse location from Cloudflare). We do not store your IP address.</li>
     </ul>
     <h2>Why we collect it</h2>
-    <p>Only to contact you about the pilot, by phone or WhatsApp, and to reply to your application. We ask you to tick a box before we use your number.</p>
+    <p>Only to contact you about the pilot, by email (and by phone or WhatsApp only if you gave a number), and to reply to your application. We ask you to tick a box before we use your number.</p>
     <h2>Who sees it</h2>
     <p>The Royce Labs team. The application is sent by email using Resend, an email delivery provider, and the website is served by Cloudflare. We do not sell your details or use them for advertising.</p>
     <h2>How long we keep it</h2>
@@ -900,12 +910,12 @@ function thanksPage() {
   const title = "Thank you | Royce Labs";
   const jsonld = { "@context": "https://schema.org", "@graph": [ORG] };
   return (
-    head({ title, desc: "Thank you for applying. We will call or WhatsApp you within one working day.", path: p, jsonld, robots: "noindex, follow" }) +
+    head({ title, desc: "Thank you for applying. We will reply by email within one to two working days.", path: p, jsonld, robots: "noindex, follow" }) +
     `<section class="section">
   <div class="container container--narrow">
     <div class="done">
       <h1 class="apply__h1" style="color:#fff">Thank you. We have your application.</h1>
-      <p>We will call or WhatsApp you within one working day. If it is urgent, email <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>
+      <p>We will reply to your email within one to two working days. If you do not hear from us, write to <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>
       <p><a class="btn btn--ghost" href="/">Back to the homepage</a></p>
     </div>
   </div>

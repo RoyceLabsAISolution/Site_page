@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="google-site-verification" content="VewmmkthEhn0U_jX5xlK8VT5srBdzetSQsjM-4pJTKk" />
 <title>பைலட் இடத்துக்கு விண்ணப்பிக்கவும் | Royce Labs</title>
-<meta name="description" content="Royce Labs AI உதவியாளர் பைலட் இடத்துக்கு 20 வினாடியில் விண்ணப்பிக்கவும்: பெயர், நிறுவனம், மொபைல் எண், நகரம். ஒரு வேலை நாளுக்குள் அழைப்போம்." />
+<meta name="description" content="Royce Labs AI உதவியாளர் பைலட் இடத்துக்கு 20 வினாடியில் விண்ணப்பிக்கவும்: பெயர், நிறுவனம், மின்னஞ்சல், நகரம். மின்னஞ்சலில் பதிலளிப்போம்." />
 <meta name="author" content="Royce Labs AI Solutions" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
 <meta name="theme-color" content="#F6F1E7" />
@@ -17,7 +17,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Royce Labs AI Solutions" />
 <meta property="og:title" content="பைலட் இடத்துக்கு விண்ணப்பிக்கவும் | Royce Labs" />
-<meta property="og:description" content="Royce Labs AI உதவியாளர் பைலட் இடத்துக்கு 20 வினாடியில் விண்ணப்பிக்கவும்: பெயர், நிறுவனம், மொபைல் எண், நகரம். ஒரு வேலை நாளுக்குள் அழைப்போம்." />
+<meta property="og:description" content="Royce Labs AI உதவியாளர் பைலட் இடத்துக்கு 20 வினாடியில் விண்ணப்பிக்கவும்: பெயர், நிறுவனம், மின்னஞ்சல், நகரம். மின்னஞ்சலில் பதிலளிப்போம்." />
 <meta property="og:url" content="https://roycelabsai.in/ta/apply/" />
 <meta property="og:locale" content="en_IN" />
 <meta property="og:image" content="https://roycelabsai.in/og-image.png" />
@@ -25,12 +25,12 @@
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="பைலட் இடத்துக்கு விண்ணப்பிக்கவும் | Royce Labs" />
-<meta name="twitter:description" content="Royce Labs AI உதவியாளர் பைலட் இடத்துக்கு 20 வினாடியில் விண்ணப்பிக்கவும்: பெயர், நிறுவனம், மொபைல் எண், நகரம். ஒரு வேலை நாளுக்குள் அழைப்போம்." />
+<meta name="twitter:description" content="Royce Labs AI உதவியாளர் பைலட் இடத்துக்கு 20 வினாடியில் விண்ணப்பிக்கவும்: பெயர், நிறுவனம், மின்னஞ்சல், நகரம். மின்னஞ்சலில் பதிலளிப்போம்." />
 <meta name="twitter:image" content="https://roycelabsai.in/og-image.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Fraunces:ital,wght@0,500;0,600;1,500&family=Noto+Sans+Tamil:wght@400;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/styles.css?v=4" />
+<link rel="stylesheet" href="/styles.css?v=5" />
 <script>document.documentElement.className="js";</script>
 <script type="application/ld+json">
 {
@@ -84,7 +84,7 @@
   <div class="container container--narrow">
     <span class="eyebrow">பைலட் இடங்கள் · கோவை</span>
     <h1 class="apply__h1">பைலட் இடத்துக்கு விண்ணப்பிக்கவும்</h1>
-    <p class="lede">நான்கு சுருக்கமான கேள்விகள். ஒரு வேலை நாளுக்குள் உங்களை அழைப்போம் அல்லது WhatsApp செய்து தெளிவான திட்டத்தைச் சொல்வோம். இப்போது கட்டணம் இல்லை.</p>
+    <p class="lede">நான்கு சுருக்கமான கேள்விகள். மின்னஞ்சலில் தெளிவான திட்டத்துடன் பதிலளிப்போம், பொதுவாக ஒன்று முதல் இரண்டு வேலை நாட்களுக்குள். விண்ணப்பிக்கக் கட்டணம் இல்லை.</p>
 
     <div id="applyStatus" class="notice" role="status" aria-live="polite" hidden></div>
 
@@ -104,14 +104,19 @@
         <p class="err" id="eBusiness" hidden></p>
       </div>
       <div class="field">
-        <label for="fPhone">மொபைல் எண் <span class="hint">(இதில் அழைப்போம் அல்லது WhatsApp செய்வோம்)</span></label>
-        <input id="fPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="98765 43210" required maxlength="20" />
-        <p class="err" id="ePhone" hidden></p>
+        <label for="fEmail">மின்னஞ்சல் முகவரி <span class="hint">(இதற்குப் பதிலளிப்போம்)</span></label>
+        <input id="fEmail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@company.com" required maxlength="120" />
+        <p class="err" id="eEmail" hidden></p>
       </div>
       <div class="field">
         <label for="fCity">நகரம்</label>
         <select id="fCity" name="city" required><option value="">உங்கள் நகரத்தைத் தேர்ந்தெடுக்கவும்</option><option value="Coimbatore">கோயம்புத்தூர்</option><option value="Chennai">சென்னை</option><option value="Madurai">மதுரை</option><option value="Tiruchirappalli">திருச்சிராப்பள்ளி</option><option value="Salem">சேலம்</option><option value="Tiruppur">திருப்பூர்</option><option value="Other Tamil Nadu city">தமிழ்நாட்டின் வேறு நகரம்</option><option value="Outside Tamil Nadu">தமிழ்நாட்டுக்கு வெளியே</option></select>
         <p class="err" id="eCity" hidden></p>
+      </div>
+      <div class="field">
+        <label for="fPhone">மொபைல் எண் <span class="hint">(விருப்பம்; அழைப்பு அல்லது WhatsApp விரும்பினால் மட்டும்)</span></label>
+        <input id="fPhone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="98765 43210" maxlength="20" />
+        <p class="err" id="ePhone" hidden></p>
       </div>
       <div class="field">
         <label for="fVolume">வாரத்துக்கு எத்தனை விசாரணைகள்? <span class="hint">(விருப்பம்)</span></label>
@@ -122,7 +127,7 @@
         <textarea id="fNote" name="note" rows="3" maxlength="600" placeholder="எ.கா: சரவணம்பட்டி அருகே மனைகள், விசாரணைகள் Facebook விளம்பரங்களிலிருந்து வருகின்றன"></textarea>
       </div>
       <div class="field field--check">
-        <label class="check"><input type="checkbox" name="consent" value="yes" id="fConsent" required /><span>இந்த எண்ணில் பைலட் பற்றி Royce Labs என்னை அழைக்கலாம் அல்லது WhatsApp செய்யலாம் என்று ஒப்புக்கொள்கிறேன். எப்போது வேண்டுமானாலும் STOP என்று சொல்லலாம். <a href="/privacy/" target="_blank" rel="noopener">தனியுரிமை அறிவிப்பைப்</a> பார்க்கவும் (ஆங்கிலத்தில்).</span></label>
+        <label class="check"><input type="checkbox" name="consent" value="yes" id="fConsent" required /><span>பைலட் பற்றி Royce Labs என்னை மின்னஞ்சலில் தொடர்புகொள்ளலாம் என்றும், நான் எண் கொடுத்திருந்தால் தொலைபேசி அல்லது WhatsApp-இலும் தொடர்புகொள்ளலாம் என்றும் ஒப்புக்கொள்கிறேன். எப்போது வேண்டுமானாலும் STOP என்று சொல்லலாம். <a href="/privacy/" target="_blank" rel="noopener">தனியுரிமை அறிவிப்பைப்</a> பார்க்கவும் (ஆங்கிலத்தில்).</span></label>
         <p class="err" id="eConsent" hidden></p>
       </div>
       <button class="btn btn--primary btn--lg apply__submit" type="submit" id="applyBtn">என் விண்ணப்பத்தை அனுப்பு</button>
@@ -131,7 +136,7 @@
 
     <div id="applyDone" class="done" hidden tabindex="-1">
       <h2>நன்றி. உங்கள் விண்ணப்பம் கிடைத்தது.</h2>
-      <p>ஒரு வேலை நாளுக்குள் உங்களை அழைப்போம் அல்லது WhatsApp செய்வோம். அவசரம் என்றால் <a href="mailto:officialroycelabs.ai@gmail.com">officialroycelabs.ai@gmail.com</a> என்ற முகவரிக்கு மின்னஞ்சல் அனுப்புங்கள்.</p>
+      <p>ஒன்று முதல் இரண்டு வேலை நாட்களுக்குள் உங்கள் மின்னஞ்சலுக்குப் பதிலளிப்போம். பதில் வரவில்லை என்றால் <a href="mailto:officialroycelabs.ai@gmail.com">officialroycelabs.ai@gmail.com</a> என்ற முகவரிக்கு எழுதுங்கள்.</p>
       <p><a class="btn btn--ghost" href="/ta/">முகப்புக்குத் திரும்பு</a></p>
     </div>
 
@@ -179,7 +184,7 @@
   </div>
 </footer>
 
-<script src="/app.js?v=4"></script>
-<script src="/apply.js?v=4"></script>
+<script src="/app.js?v=5"></script>
+<script src="/apply.js?v=5"></script>
 </body>
 </html>

@@ -49,7 +49,9 @@ export async function onRequestPost({ request, env }) {
 
   const name = clean(form.get("name"), 120);
   const business = clean(form.get("business"), 160);
-  const phone = normalizePhone(form.get("phone"));
+  const email = clean(form.get("email"), 120).toLowerCase();
+  const phoneRaw = clean(form.get("phone"), 20);
+  const phone = phoneRaw ? normalizePhone(phoneRaw) : "";
   const city = clean(form.get("city"), 60);
   const volume = clean(form.get("volume"), 30);
   const note = clean(form.get("note"), 600);
@@ -60,7 +62,8 @@ export async function onRequestPost({ request, env }) {
   const errors = {};
   if (name.length < 2) errors.name = "Please enter your name.";
   if (business.length < 2) errors.business = "Please enter your business or company name.";
-  if (!phone) errors.phone = "Please enter a 10-digit mobile number.";
+  if (!/^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]{2,}$/.test(email)) errors.email = "Please enter a valid email address.";
+  if (phoneRaw && !phone) errors.phone = "Please enter a 10-digit mobile number, or leave it empty.";
   if (!CITIES.includes(city)) errors.city = "Please choose a city.";
   if (!VOLUMES.includes(volume)) errors.volume = "Please choose from the list.";
   if (!consent) errors.consent = "Please tick the box so we can contact you.";
@@ -81,7 +84,8 @@ export async function onRequestPost({ request, env }) {
     `New pilot application\n\n` +
     `Name:      ${name}\n` +
     `Business:  ${business}\n` +
-    `Phone:     ${phone}  (WhatsApp: https://wa.me/${phone.replace(/\D/g, "")})\n` +
+    `Email:     ${email}\n` +
+    `Phone:     ${phone ? phone + "  (WhatsApp: https://wa.me/" + phone.replace(/\D/g, "") + ")" : "-"}\n` +
     `City:      ${city}\n` +
     `Enquiries/week: ${volume || "-"}\n` +
     `Note:      ${note || "-"}\n\n` +
@@ -94,7 +98,7 @@ export async function onRequestPost({ request, env }) {
     res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { Authorization: `Bearer ${apiKey}`, "content-type": "application/json" },
-      body: JSON.stringify({ from, to: [to], subject: `Pilot application: ${name}, ${city}`, text }),
+      body: JSON.stringify({ from, to: [to], reply_to: email, subject: `Pilot application: ${name}, ${city}`, text }),
     });
   } catch (err) {
     console.error("apply: resend fetch failed", String(err));

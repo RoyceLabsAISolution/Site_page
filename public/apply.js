@@ -12,8 +12,8 @@
   var EMAIL = "officialroycelabs.ai@gmail.com";
   var ta = document.documentElement.lang.indexOf("ta") === 0;
   var T = ta
-    ? { name: "உங்கள் பெயரை உள்ளிடவும்.", business: "உங்கள் நிறுவனப் பெயரை உள்ளிடவும்.", phone: "10 இலக்க மொபைல் எண்ணை உள்ளிடவும்.", city: "நகரத்தைத் தேர்ந்தெடுக்கவும்.", consent: "நாங்கள் தொடர்புகொள்ள ஒப்புதல் பெட்டியைத் தேர்ந்தெடுக்கவும்.", sending: "அனுப்புகிறது…", send: "என் விண்ணப்பத்தை அனுப்பு", err: "ஏதோ தவறு. கீழே உள்ள புலங்களைச் சரிபார்க்கவும்.", subj: "பைலட் விண்ணப்பம்" }
-    : { name: "Please enter your name.", business: "Please enter your business or company name.", phone: "Please enter a 10-digit mobile number.", city: "Please choose a city.", consent: "Please tick the box so we can contact you.", sending: "Sending…", send: "Send my application", err: "Please check the fields below.", subj: "Pilot application" };
+    ? { name: "உங்கள் பெயரை உள்ளிடவும்.", business: "உங்கள் நிறுவனப் பெயரை உள்ளிடவும்.", email: "சரியான மின்னஞ்சல் முகவரியை உள்ளிடவும்.", phone: "10 இலக்க மொபைல் எண்ணை உள்ளிடவும், அல்லது காலியாக விடவும்.", city: "நகரத்தைத் தேர்ந்தெடுக்கவும்.", consent: "நாங்கள் தொடர்புகொள்ள ஒப்புதல் பெட்டியைத் தேர்ந்தெடுக்கவும்.", sending: "அனுப்புகிறது…", send: "என் விண்ணப்பத்தை அனுப்பு", err: "ஏதோ தவறு. கீழே உள்ள புலங்களைச் சரிபார்க்கவும்.", subj: "பைலட் விண்ணப்பம்" }
+    : { name: "Please enter your name.", business: "Please enter your business or company name.", email: "Please enter a valid email address.", phone: "Please enter a 10-digit mobile number, or leave it empty.", city: "Please choose a city.", consent: "Please tick the box so we can contact you.", sending: "Sending…", send: "Send my application", err: "Please check the fields below.", subj: "Pilot application" };
 
   // Preselect city from ?city=
   try {
@@ -45,11 +45,13 @@
     var bad = [];
     var n = f.name.value.trim().length >= 2;
     var b = f.business.value.trim().length >= 2;
-    var p = /^[6-9]\d{9}$/.test(digits(f.phone.value));
+    var em = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.value.trim());
+    var p = !f.phone.value.trim() || /^[6-9]\d{9}$/.test(digits(f.phone.value));
     var ci = !!f.city.value;
     var co = f.consent.checked;
     setErr("eName", n ? "" : T.name); if (!n) bad.push(f.name);
     setErr("eBusiness", b ? "" : T.business); if (!b) bad.push(f.business);
+    setErr("eEmail", em ? "" : T.email); if (!em) bad.push(f.email);
     setErr("ePhone", p ? "" : T.phone); if (!p) bad.push(f.phone);
     setErr("eCity", ci ? "" : T.city); if (!ci) bad.push(f.city);
     setErr("eConsent", co ? "" : T.consent); if (!co) bad.push(f.consent);
@@ -58,7 +60,7 @@
 
   function mailtoFromForm() {
     var f = form.elements;
-    var body = "Name: " + f.name.value + "\r\nBusiness: " + f.business.value + "\r\nPhone: " + f.phone.value +
+    var body = "Name: " + f.name.value + "\r\nBusiness: " + f.business.value + "\r\nEmail: " + f.email.value + "\r\nPhone: " + f.phone.value +
       "\r\nCity: " + f.city.value + "\r\nEnquiries a week: " + f.volume.value + "\r\nNote: " + f.note.value;
     return "mailto:" + EMAIL + "?subject=" + encodeURIComponent(T.subj + " - " + (f.city.value || "")) + "&body=" + encodeURIComponent(body);
   }
@@ -84,7 +86,7 @@
         }
         if (o.status === 422 && o.j && o.j.errors) {
           var m = o.j.errors;
-          setErr("eName", m.name); setErr("eBusiness", m.business); setErr("ePhone", m.phone); setErr("eCity", m.city); setErr("eConsent", m.consent);
+          setErr("eName", m.name); setErr("eBusiness", m.business); setErr("eEmail", m.email); setErr("ePhone", m.phone); setErr("eCity", m.city); setErr("eConsent", m.consent);
           btn.disabled = false; btn.textContent = T.send; return;
         }
         throw new Error("send_failed");
