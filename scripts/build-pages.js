@@ -7,7 +7,7 @@ const path = require("path");
 
 const SITE = "https://roycelabsai.in";
 const OUT = path.join(__dirname, "..", "public");
-const EMAIL = "officialroycelabs.ai@gmail.com";
+const EMAIL = "hello@roycelabsai.in";
 const DATE = "2026-11-13";
 const ASSET_V = "6";
 

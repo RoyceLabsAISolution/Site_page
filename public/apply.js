@@ -9,7 +9,7 @@
   var fail = document.getElementById("applyFail");
   var mail = document.getElementById("applyMail");
   var status = document.getElementById("applyStatus");
-  var EMAIL = "officialroycelabs.ai@gmail.com";
+  var EMAIL = "hello@roycelabsai.in";
   var ta = document.documentElement.lang.indexOf("ta") === 0;
   var T = ta
     ? { name: "உங்கள் பெயரை உள்ளிடவும்.", business: "உங்கள் நிறுவனப் பெயரை உள்ளிடவும்.", email: "சரியான மின்னஞ்சல் முகவரியை உள்ளிடவும்.", phone: "10 இலக்க மொபைல் எண்ணை உள்ளிடவும், அல்லது காலியாக விடவும்.", city: "நகரத்தைத் தேர்ந்தெடுக்கவும்.", consent: "நாங்கள் தொடர்புகொள்ள ஒப்புதல் பெட்டியைத் தேர்ந்தெடுக்கவும்.", sending: "அனுப்புகிறது…", send: "என் விண்ணப்பத்தை அனுப்பு", err: "ஏதோ தவறு. கீழே உள்ள புலங்களைச் சரிபார்க்கவும்.", subj: "பைலட் விண்ணப்பம்" }
