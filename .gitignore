@@ -10,3 +10,7 @@ Desktop.ini
 .env.*
 .dev.vars
 .wrangler/
+
+# Local n8n export and audit scratch
+cbs3.json
+.audit-summary.txt

@@ -1,3 +1,15 @@
+# Search and AI-answer crawlers are welcome: we want to be found and cited.
+# Training crawlers (GPTBot, ClaudeBot, Google-Extended) are not named, so they follow the default below.
 User-agent: *
 Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
 Sitemap: https://roycelabsai.in/sitemap.xml
