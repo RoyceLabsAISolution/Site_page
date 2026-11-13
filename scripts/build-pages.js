@@ -9,7 +9,7 @@ const SITE = "https://roycelabsai.in";
 const OUT = path.join(__dirname, "..", "public");
 const EMAIL = "officialroycelabs.ai@gmail.com";
 const DATE = "2026-11-13";
-const ASSET_V = "5";
+const ASSET_V = "6";
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const write = (rel, html) => {

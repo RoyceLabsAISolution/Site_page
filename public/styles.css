@@ -1,4 +1,4 @@
-﻿/* Royce Labs: warm, developer-brochure look. Cream paper, forest ink, terracotta accent. */
+/* Royce Labs: warm, developer-brochure look. Cream paper, forest ink, terracotta accent. */
 :root{
   --cream:#F6F1E7; --paper:#FFFDF8; --sand:#EDE7DA; --line:#E2D9C6;
   --ink:#16241E; --muted:#4F5B53; --forest:#123D30; --forest-2:#1A5240; --green:#1F6B52;
@@ -166,7 +166,9 @@ ul,ol{margin:0;padding:0;list-style:none}
 .price__amt span{font:500 1.05rem var(--sans);color:var(--muted)}
 .price__note{color:var(--muted);font-size:.95rem;margin-bottom:1.3rem}
 .price .btn{margin-top:1.2rem;width:100%}
-.after h3{font-size:1.25rem;color:#fff;margin:0 0 .5rem}
+.after{background:var(--forest);border-radius:var(--r-lg);padding:2rem;color:#F3EEE2}
+.after h3{font-size:1.25rem;color:#fff;margin:1.4rem 0 .5rem}
+.after h3:first-child{margin-top:0}
 .after p,.after li{color:#D5DDD3}
 .after .mark{margin:.4rem 0 1.4rem}
 .after .fine{font-size:.88rem;color:#B9C6BC}
