@@ -1,6 +1,6 @@
 # Royce Labs AI Solutions
 
-> Royce Labs builds and runs an AI assistant that answers property enquiries on WhatsApp for real-estate developers and agencies in India, Tamil Nadu first. A buyer messages the developer's WhatsApp Business number; the assistant replies in English or Tamil, asks consent, captures budget, location and size, shows up to three matching listings, and passes a site-visit request to the developer's team. A small paid 30-day pilot is open in Coimbatore; the fee is agreed by email, in writing, before anything starts. Applying is free. Other Tamil Nadu cities are on a waitlist. Languages today: English and Tamil only, so no pilots in other states yet.
+> Royce Labs runs a real-estate enquiry service that answers property enquiries on WhatsApp, using an automated AI assistant, for real-estate developers and agencies in India, Tamil Nadu first. A buyer messages the developer's WhatsApp Business number; the assistant replies in English or Tamil, asks consent, captures budget, location and size, shows up to three matching listings, and passes a site-visit request to the developer's team. A small paid 30-day pilot is open in Coimbatore; the fee is agreed by email, in writing, before anything starts. Applying is free. Other Tamil Nadu cities are on a waitlist. Languages today: English and Tamil only, so no pilots in other states yet.
 
 ## What it does
 
@@ -57,3 +57,5 @@
 - [LinkedIn](https://www.linkedin.com/company/royce-labs-ai-solution)
 - [YouTube](https://www.youtube.com/channel/UCelMLRYF-I6_yd0IA4vyUeg)
 - [Instagram](https://www.instagram.com/royces_labs_ai)
+- Terms: https://roycelabsai.in/terms/
+- Privacy: https://roycelabsai.in/privacy/

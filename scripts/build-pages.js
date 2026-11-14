@@ -8,7 +8,8 @@ const path = require("path");
 const SITE = "https://roycelabsai.in";
 const OUT = path.join(__dirname, "..", "public");
 const EMAIL = "hello@roycelabsai.in";
-const DATE = "2026-11-13";
+const DATE = "2026-11-14";
+const DATE_LONG = "14 November 2026";
 const ASSET_V = "6";
 
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -140,7 +141,7 @@ function footer(opts = {}) {
   <div class="container footer__grid">
     <div>
       <a class="brand" href="/"><span class="brand__mark" aria-hidden="true">R</span>Royce Labs</a>
-      <p>AI assistant for real-estate enquiries on WhatsApp, Tamil Nadu first. English and Tamil, consent first, run for you.</p>
+      <p>Real-estate enquiry service on WhatsApp, Tamil Nadu first. English and Tamil, consent first, run for you.</p>
     </div>
     <nav aria-label="Cities">
       <h4>Cities</h4>
@@ -160,8 +161,8 @@ function footer(opts = {}) {
     </div>
   </div>
   <div class="container footer__bottom">
-    <p>&copy; 2026 Royce Labs. AI assistant for real-estate enquiries on WhatsApp, Tamil Nadu first.</p>
-    <p><a href="/privacy/">Privacy</a> · Last updated <time datetime="${DATE}">13 November 2026</time></p>
+    <p>&copy; 2026 Royce Labs. Real-estate enquiry service on WhatsApp, Tamil Nadu first.</p>
+    <p><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · Last updated <time datetime="${DATE}">${DATE_LONG}</time></p>
   </div>
 </footer>
 
@@ -310,10 +311,10 @@ function cityPage(c) {
   const d = CITY_DATA[c.slug];
   const nm = c.name;
   const p = `/cities/${c.slug}/`;
-  const title = `AI Assistant for ${nm} Real Estate | Royce Labs`;
+  const title = `Real-Estate Enquiry Service for ${nm} | Royce Labs`;
   const desc = c.pilot
-    ? `AI assistant on WhatsApp for ${nm} developers and agencies: English and Tamil replies, consent first, site visits to your team. Pilot places open.`
-    : `AI assistant on WhatsApp for ${nm} real estate: English and Tamil replies, consent first, site visits to your team. Join the ${nm} waitlist.`;
+    ? `WhatsApp enquiry service for ${nm} developers and agencies, using an automated AI assistant: English and Tamil replies, consent first, site visits to your team. Pilot places open.`
+    : `WhatsApp enquiry service for ${nm} real estate, using an automated AI assistant: English and Tamil replies, consent first, site visits to your team. Join the ${nm} waitlist.`;
   const faq = [
     [`Is Royce Labs live in ${nm}?`, c.pilot
       ? "Coimbatore is our pilot city. We are opening 2 to 3 pilot places there now. The product is built and tested offline; the pilot is its first live run, and we will tell you plainly what has and has not been proven."
@@ -335,8 +336,8 @@ function cityPage(c) {
       {
         "@type": "Service",
         "@id": SITE + p + "#service",
-        name: `AI assistant for ${nm} real-estate enquiries`,
-        serviceType: "AI assistant for property enquiries on WhatsApp",
+        name: `Real-estate enquiry service for ${nm}`,
+        serviceType: "Real-estate enquiry service on WhatsApp",
         provider: { "@id": SITE + "/#organization" },
         areaServed: { "@type": "City", name: nm, containedInPlace: { "@type": "AdministrativeArea", name: "Tamil Nadu, India" } },
         audience: { "@type": "BusinessAudience", audienceType: "Plot and layout developers, real-estate agencies and brokers" },
@@ -357,7 +358,7 @@ function cityPage(c) {
     <div>
       ${crumbs(items)}
       <span class="eyebrow">${c.pilot ? "Pilot open in " + nm : nm + " waitlist"}</span>
-      <h1>AI assistant for <em>${nm} real-estate enquiries</em></h1>
+      <h1>Real-estate enquiry service for <em>${nm}</em></h1>
       <p class="lede">${esc(d.lead)} A buyer messages your WhatsApp Business number; the assistant replies in English or Tamil, asks consent, captures the requirement and passes a site-visit request to your team.</p>
       <div class="hero__cta">
         <a class="btn btn--primary btn--lg" href="${applyHref(nm)}">${cta}</a>
@@ -385,7 +386,7 @@ ${d.chat.map(([w, t]) => `            <div class="bubble bubble--${w}">${esc(t)}
 
 <section class="inshort" aria-label="In short">
   <div class="container">
-    <p><strong>In short:</strong> Royce Labs is an AI assistant for real-estate developers and agencies in ${nm}, Tamil Nadu. It answers property enquiries on WhatsApp: it replies in English or Tamil, asks consent before saving anything, captures budget, location and size, shows up to three matching listings from your own inventory and passes a site-visit request to your team. It never books a visit, quotes a price or takes money. ${c.pilot ? "The 30-day pilot is a small paid pilot, with the fee agreed by email before it starts." : "Our first pilot is in Coimbatore; " + nm + " is next on the list."}</p>
+    <p><strong>In short:</strong> Royce Labs is an enquiry service for real-estate developers and agencies in ${nm}, Tamil Nadu. It answers property enquiries on WhatsApp using an automated AI assistant: it replies in English or Tamil, asks consent before saving anything, captures budget, location and size, shows up to three matching listings from your own inventory and passes a site-visit request to your team. It never books a visit, quotes a price or takes money. ${c.pilot ? "The 30-day pilot is a small paid pilot, with the fee agreed by email before it starts." : "Our first pilot is in Coimbatore; " + nm + " is next on the list."}</p>
   </div>
 </section>
 
@@ -402,10 +403,10 @@ ${d.asks.map((a) => `      <li>${esc(a)}</li>`).join("\n")}
 
     <h2>How it works for a ${nm} developer or agency</h2>
     <ol class="plain">
-      <li><b>Buyer messages you</b> on a WhatsApp Business number set up for your pilot. The assistant says it is automated and asks consent before saving anything.</li>
+      <li><b>Buyer messages you</b> on your own WhatsApp Business number, registered to your business. The assistant says it is automated and asks consent before saving anything.</li>
       <li><b>Requirement captured:</b> budget, location, property type, size and timeline.</li>
       <li><b>Matching listings shown:</b> up to three from your own inventory. It never invents a plot or quotes a price.</li>
-      <li><b>Your team takes over:</b> the buyer asks for a site visit, and you confirm or decline in the broker console.</li>
+      <li><b>Your team takes over:</b> a buyer can ask for a person at any time, and you confirm or decline every site visit in the broker console.</li>
     </ol>
 
     <h2>Where we are today in ${nm}</h2>
@@ -447,8 +448,8 @@ ${others.map((o) => `      <li><a href="/cities/${o.slug}/">${o.name}</a></li>`)
 // ---------- hubs ----------
 function citiesIndex() {
   const p = "/cities/";
-  const title = "AI Assistant for Real Estate, by City in Tamil Nadu | Royce Labs";
-  const desc = "Royce Labs AI assistant for real-estate enquiries in Coimbatore (pilot open), Chennai, Madurai, Tiruchirappalli, Salem and Tiruppur. English and Tamil, consent first.";
+  const title = "Real-Estate Enquiry Service by City in Tamil Nadu | Royce Labs";
+  const desc = "Royce Labs real-estate enquiry service in Coimbatore (pilot open), Chennai, Madurai, Tiruchirappalli, Salem and Tiruppur. English and Tamil, consent first.";
   const items = [{ name: "Home", path: "/" }, { name: "Cities", path: p }];
   const jsonld = {
     "@context": "https://schema.org",
@@ -465,7 +466,7 @@ function citiesIndex() {
   <div class="container container--narrow prose">
     ${crumbs(items)}
     <span class="eyebrow">Where we work</span>
-    <h1>AI assistant for Tamil Nadu real-estate enquiries, city by city</h1>
+    <h1>Real-estate enquiry service for Tamil Nadu, city by city</h1>
     <p class="lede">Royce Labs is built for Indian real estate, Tamil Nadu first. Our first pilot is in Coimbatore. The other cities below are taking names now and open after the Coimbatore pilot shows it works. We have not run a live pilot outside Coimbatore.</p>
     <ul class="citylist">
 ${CITIES.map((c) => `      <li><a href="/cities/${c.slug}/"><strong>${c.name}</strong><span>${c.pilot ? "Pilot places open" : "Waitlist open"}</span></a></li>`).join("\n")}
@@ -550,7 +551,7 @@ G["whatsapp-lead-management-real-estate-india"] = {
     <h2>Related</h2>
     <ul class="bul">
       <li><a href="/guides/dpdp-consent-whatsapp-real-estate-leads/">DPDP consent checklist for WhatsApp leads</a></li>
-      <li><a href="/cities/coimbatore/">AI assistant for Coimbatore real estate (pilot open)</a></li>
+      <li><a href="/cities/coimbatore/">Real-estate enquiry service for Coimbatore (pilot open)</a></li>
       <li><a href="/#faq">Royce Labs FAQ</a></li>
     </ul>`,
   faq: [
@@ -668,7 +669,7 @@ function guidePage(g) {
     ${crumbs(items)}
     <span class="eyebrow">Guide</span>
     <h1>${esc(gd.title)}</h1>
-    <p class="meta">By Royce Labs · Last updated <time datetime="${DATE}">13 November 2026</time></p>
+    <p class="meta">By Royce Labs · Last updated <time datetime="${DATE}">${DATE_LONG}</time></p>
     <p class="answer"><strong>Short answer:</strong> ${esc(body.answer)}</p>
 ${body.body}
     <h2>FAQ</h2>
@@ -693,7 +694,7 @@ ${body.body}
 function applyPage() {
   const p = "/apply/";
   const title = "Apply for a Pilot Place | Royce Labs";
-  const desc = "Apply for a Royce Labs AI assistant pilot place in 20 seconds: name, business, email and city. We reply by email with a plain plan.";
+  const desc = "Apply for a Royce Labs pilot place in 20 seconds: name, business, email and city. We reply by email with a plain plan.";
   const items = [{ name: "Home", path: "/" }, { name: "Apply", path: p }];
   const jsonld = {
     "@context": "https://schema.org",
@@ -781,7 +782,7 @@ function applyPage() {
 function applyPageTa() {
   const p = "/ta/apply/";
   const title = "பைலட் இடத்துக்கு விண்ணப்பிக்கவும் | Royce Labs";
-  const desc = "Royce Labs AI உதவியாளர் பைலட் இடத்துக்கு 20 வினாடியில் விண்ணப்பிக்கவும்: பெயர், நிறுவனம், மின்னஞ்சல், நகரம். மின்னஞ்சலில் பதிலளிப்போம்.";
+  const desc = "Royce Labs பைலட் இடத்துக்கு 20 வினாடியில் விண்ணப்பிக்கவும்: பெயர், நிறுவனம், மின்னஞ்சல், நகரம். மின்னஞ்சலில் பதிலளிப்போம்.";
   const jsonld = {
     "@context": "https://schema.org",
     "@graph": [ORG, { "@type": "ContactPage", "@id": SITE + p + "#webpage", url: SITE + p, name: title, inLanguage: "ta-IN", dateModified: DATE }],
@@ -878,7 +879,7 @@ function privacyPage() {
     ${crumbs(items)}
     <span class="eyebrow">Privacy</span>
     <h1>Privacy notice</h1>
-    <p class="meta">Last updated <time datetime="${DATE}">13 November 2026</time>. This is a plain-language notice written by Royce Labs. It has not been reviewed by a lawyer.</p>
+    <p class="meta">Last updated <time datetime="${DATE}">${DATE_LONG}</time>. This is a plain-language notice written by Royce Labs. It has not been reviewed by a lawyer.</p>
     <h2>Who we are</h2>
     <p>Royce Labs AI Solutions, Coimbatore, Tamil Nadu. Contact: <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>
     <h2>What we collect when you apply for a pilot place</h2>
@@ -895,8 +896,15 @@ function privacyPage() {
     <p>For as long as we are in touch with you about the pilot, and up to 12 months after the last contact if you do not join. After that we delete it.</p>
     <h2>Your choices</h2>
     <p>Say STOP on any call or WhatsApp message, or email us, and we will stop contacting you. You can also ask what we hold about you, ask us to correct it, or ask us to delete it. We will reply within 30 days.</p>
-    <h2>Buyers who message our customers</h2>
-    <p>This notice is about the website. Buyers who chat with a developer's WhatsApp assistant are told it is automated and asked for consent first; see <a href="/guides/dpdp-consent-whatsapp-real-estate-leads/">our DPDP consent guide</a>.</p>
+    <h2>Buyers who message our customers on WhatsApp</h2>
+    <p>The sections above are about this website. When a buyer chats with a developer's WhatsApp assistant, the developer decides why the buyer's details are collected, and we handle them only on the developer's behalf.</p>
+    <ul class="bul">
+      <li><b>What is collected:</b> only what the buyer chooses to share in the chat, such as name, budget, preferred location, plot size and a site-visit request. The assistant asks for consent before saving anything and says it is automated.</li>
+      <li><b>Who sees it:</b> the developer or agency whose number the buyer wrote to. Each customer's data is kept separate; one customer's chats are never shown to another, and we do not use chat data to train AI models.</li>
+      <li><b>Opting out:</b> the buyer can say STOP or no at any time. The assistant stops and treats consent as withdrawn. A buyer can also ask the developer, or write to <a href="mailto:${EMAIL}">${EMAIL}</a>, to see, correct or delete their details.</li>
+      <li><b>A person:</b> buyers can ask for a person at any time, and a person confirms every site visit.</li>
+    </ul>
+    <p>See also <a href="/guides/dpdp-consent-whatsapp-real-estate-leads/">our DPDP consent guide</a> and our <a href="/terms/">terms</a>.</p>
     <h2>Cookies</h2>
     <p>This website does not set advertising cookies. Cloudflare may use strictly necessary cookies for security and performance.</p>
   </div>
@@ -905,7 +913,62 @@ function privacyPage() {
     footer()
   );
 }
-function thanksPage() {
+function termsPage() {
+  const p = "/terms/";
+  const title = "Terms of Service | Royce Labs";
+  const desc = "Plain-language terms for the Royce Labs real-estate enquiry service on WhatsApp: what the pilot is, how fees work, who owns the WhatsApp number and the leads, and how to reach a person.";
+  const items = [{ name: "Home", path: "/" }, { name: "Terms", path: p }];
+  const jsonld = {
+    "@context": "https://schema.org",
+    "@graph": [ORG, { "@type": "WebPage", "@id": SITE + p + "#webpage", url: SITE + p, name: title, inLanguage: "en-IN", dateModified: DATE }, { ...crumbLd(items), "@id": SITE + p + "#breadcrumb" }],
+  };
+  return (
+    head({ title, desc, path: p, jsonld }) +
+    `<section class="section">
+  <div class="container container--narrow prose">
+    ${crumbs(items)}
+    <span class="eyebrow">Terms</span>
+    <h1>Terms of service</h1>
+    <p class="meta">Last updated <time datetime="${DATE}">${DATE_LONG}</time>. This is a plain-language summary written by Royce Labs. It has not been reviewed by a lawyer, and the written agreement we sign with each customer takes priority over it.</p>
+    <h2>Who we are</h2>
+    <p>Royce Labs AI Solutions, Coimbatore, Tamil Nadu. Contact: <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>
+    <h2>What the service is</h2>
+    <p>We run a real-estate enquiry service for developers and agencies. When a buyer messages your WhatsApp Business number, an automated AI assistant replies in English or Tamil, asks for consent, records the buyer's requirement, shows matching listings that you provided, and passes site-visit requests to your team. Buyers are told they are talking to an automated assistant.</p>
+    <h2>What it does not do</h2>
+    <ul class="bul">
+      <li>It does not quote prices, book visits on its own, or take money, bank details or ID documents.</li>
+      <li>It only uses the listings and approval details you give it. You are responsible for their accuracy.</li>
+      <li>It does not message people who have not contacted you first. Old-lead follow-up and phone calls are planned, not live, and will not start until the consent and telecom rules have been checked by a lawyer.</li>
+    </ul>
+    <h2>The pilot and fees</h2>
+    <p>Applying is free. The first step is a small 30-day paid pilot in Coimbatore. We agree the fee with you by email, in writing, before anything starts. Nothing is charged until you agree. After the pilot you can stop, or move to a monthly plan plus a one-time setup fee, again agreed in writing first. Fees may change as we learn from the first customers, but never for a period you have already agreed.</p>
+    <p>The product is built and tested offline. Live use with real buyers has not yet been proven, and the pilot is its first live run. We will tell you plainly what has and has not worked.</p>
+    <h2>Your WhatsApp number and your leads</h2>
+    <ul class="bul">
+      <li>The WhatsApp Business account and phone number are yours, registered to your business under your own Meta business account. We do not resell WhatsApp access.</li>
+      <li>The leads and buyer conversations belong to you. We handle them only on your behalf, keep each customer's data separate, and do not share one customer's chats or leads with another.</li>
+      <li>We do not use your buyers' data to train AI models.</li>
+    </ul>
+    <h2>A person is always reachable</h2>
+    <p>The assistant is not a replacement for your team. Buyers can ask for a person at any time, and your team confirms every site visit. Our own contact for customers is <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>
+    <h2>Consent and opting out</h2>
+    <p>The assistant asks for consent before saving anything. A buyer can say STOP or no at any time and the assistant stops and treats consent as withdrawn. See our <a href="/privacy/">privacy notice</a> and the <a href="/guides/dpdp-consent-whatsapp-real-estate-leads/">DPDP consent guide</a>.</p>
+    <h2>What we need from you</h2>
+    <ul class="bul">
+      <li>Use the service only for lawful real-estate enquiries, and follow <a href="https://business.whatsapp.com/policy" target="_blank" rel="noopener">WhatsApp's Business Messaging Policy</a>.</li>
+      <li>Give accurate listings and approvals, and keep them up to date.</li>
+      <li>Do not use it to discriminate against buyers or to mislead them.</li>
+    </ul>
+    <h2>Stopping</h2>
+    <p>You can cancel after the 30-day pilot with no lock-in, or earlier by emailing us. We can stop the service if WhatsApp or Meta restricts the account, if the rules above are broken, or if a law requires it.</p>
+    <h2>No guarantees</h2>
+    <p>We do not promise a number of leads or sales. WhatsApp, Meta and other providers can change their rules or have outages that we do not control.</p>
+  </div>
+</section>
+` +
+    footer()
+  );
+}function thanksPage() {
   const p = "/apply/thanks/";
   const title = "Thank you | Royce Labs";
   const jsonld = { "@context": "https://schema.org", "@graph": [ORG] };
@@ -930,6 +993,7 @@ write("cities", citiesIndex());
 write("guides", guidesIndex());
 write("apply", applyPage());
 write("privacy", privacyPage());
+write("terms", termsPage());
 write("apply/thanks", thanksPage());
 write("ta/apply", applyPageTa());
 GUIDES.forEach((g) => write(`guides/${g.slug}`, guidePage(g)));
@@ -944,6 +1008,7 @@ const urls = [
   { loc: "/apply/", pri: "0.6" },
   { loc: "/ta/apply/", pri: "0.5" },
   { loc: "/privacy/", pri: "0.3" },
+  { loc: "/terms/", pri: "0.3" },
   ...GUIDES.map((g) => ({ loc: `/guides/${g.slug}/`, pri: "0.7" })),
 ];
 const sm = `<?xml version="1.0" encoding="UTF-8"?>
